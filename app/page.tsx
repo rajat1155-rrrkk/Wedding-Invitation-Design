@@ -1,64 +1,105 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+const steps = [
+  {
+    title: "Login and Setup",
+    desc: "Begin with your family profile and invite preferences.",
+    image: "https://images.pexels.com/photos/31595391/pexels-photo-31595391.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "Choose Event Product",
+    desc: "Browse event categories, themes, visuals, and pricing like an invite storefront.",
+    image: "https://images.pexels.com/photos/34479850/pexels-photo-34479850.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "Generate and Edit",
+    desc: "Get AI-style generation then customize every layer in timeline editor.",
+    image: "https://images.pexels.com/photos/30672338/pexels-photo-30672338.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+];
+
+const occasions = ["Roka", "Engagement", "Haldi", "Mehendi", "Sangeet", "Wedding", "Reception", "Godh Bharai"];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="hero-bg min-h-screen overflow-hidden text-white">
+      <main className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center px-6 pb-16 pt-30 sm:px-10">
+        <div className="pointer-events-none absolute -left-22 top-30 h-56 w-56 rounded-full bg-amber-400/20 blur-3xl float-soft" />
+        <div className="pointer-events-none absolute right-0 top-52 h-72 w-72 rounded-full bg-rose-400/15 blur-3xl float-soft" />
+
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className="mb-4 inline-flex w-fit rounded-full border border-white/35 bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.2em]"
+        >
+          Matrimonial Invitation Builder
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl text-5xl leading-tight sm:text-6xl"
+        >
+          Premium Indian function invites with themes, products, and pricing.
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.55 }}
+          className="mt-5 max-w-3xl text-lg text-white/85"
+        >
+          Create wedding and family celebration invitations in a polished 3-step flow, from occasion selection to editable
+          timeline output.
+        </motion.p>
+
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25, duration: 0.45 }} className="mt-8 flex flex-wrap gap-3">
+          {occasions.map((item) => (
+            <span key={item} className="event-pill rounded-full px-3 py-1 text-xs font-semibold text-white/95 backdrop-blur">
+              {item}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.28, duration: 0.45 }}
+          className="mt-9 flex flex-wrap gap-4"
+        >
+          <Link href="/login" className="rounded-full bg-accent px-7 py-3 text-sm font-semibold shadow-xl-plus hover:brightness-110">
+            Start Designing
+          </Link>
+          <Link
+            href="/select"
+            className="rounded-full border border-white/55 px-7 py-3 text-sm font-semibold text-white/95 hover:bg-white/15"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            Explore Invite Products
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.55 }}
+          className="mt-14 grid gap-6 md:grid-cols-3"
+        >
+          {steps.map((step) => (
+            <article key={step.title} className="premium-surface overflow-hidden rounded-2xl p-4 text-zinc-900 shadow-xl-plus">
+              <div className="relative h-44 w-full overflow-hidden rounded-xl">
+                <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
+              <h3 className="mt-4 text-2xl text-[#3f2a22]">{step.title}</h3>
+              <p className="mt-2 text-sm text-zinc-700">{step.desc}</p>
+            </article>
+          ))}
+        </motion.div>
       </main>
     </div>
   );
