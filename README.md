@@ -1,4 +1,4 @@
-## Wedding Invitation Design
+# Wedding Invitation Design
 
 Wedding Invitation Design is a frontend-first Next.js demo for showcasing a premium Indian invitation-builder flow. It is designed to work well as a Vercel demo project, with a polished landing page, category browsing, themed invite packs, a loading/generation step, and a lightweight browser-based editor experience.
 
